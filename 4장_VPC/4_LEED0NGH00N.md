@@ -37,17 +37,14 @@ Public IP 대역 내 사설 네트워크로 지정된 대역으로서, Public IP
 내가 `192.167.1.0`라는 C 클래스 네트워크의 소유주라 가정하자. 어느 기관이 나에게 30개의 호스트를 빌려달라고 했을 때 난 딱 30개만 줄 수가 없고 네트워크 안에 있는 호스트 전부를 줘야 한다. 그러면 사용하지 않는 호스트들의 낭비가 있어 좋지 않다. 
 
 ### **서브넷(Subnet) → 네트워크를 더 세분화하기 위한 개념**
-
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image.png)
+![Image](https://github.com/user-attachments/assets/087969b8-0abf-4243-9f9e-eb2b36cca738)
 
 IP주소는 네트워크 ID와 호스트 ID로 이뤄져 있다. 기존 클래스 기반 주소 방식은 네트워크와 호스트를 구분하는 기준이 클래스 별로 정해져 있었다면, 서브넷은 **서브넷 마스크**를 사용해 구분한다.
 
 여기서 서브넷은 IP주소의 네트워크 영역의 부분 네트워크란 뜻이다. 
 
 <aside>
-📌
-
-서브넷 마스크 : IP주소 체계에서 네트워크와 호스트를 구분하는 역할
+📌서브넷 마스크 : IP주소 체계에서 네트워크와 호스트를 구분하는 역할
 
 `192.167.1.0/24` ⇒ 앞에서부터 24번째 비트까지가 네트워크, 그 뒤부터 호스트 (/24 = 서브넷 마스크)
 
@@ -68,9 +65,7 @@ IP주소는 네트워크 ID와 호스트 ID로 이뤄져 있다. 기존 클래�
 또한 기존`192.167.1.0/24` 의 네트워크가 `192.167.1.0/25` 과 `192.167.1.128/25` 2개로 네트워크(서브넷)가 1개에서 2개가 되었다.
 
 <aside>
-📌
-
-서브넷팅 : 서브넷 마스크의 비트 수 1 증가
+📌서브넷팅 : 서브넷 마스크의 비트 수 1 증가
 
 </aside>
 
@@ -91,21 +86,15 @@ IP주소는 네트워크 ID와 호스트 ID로 이뤄져 있다. 기존 클래�
 - 192.168.1.0/26 → **26비트는 네트워크, 6비트는 호스트 (더 작은 네트워크)**
 
 <aside>
-💡
-
-Q : 192.168.1.0 네트워크 범위가 어디까지인데?? 
-
-A : 192.168.1.0/**24**
+💡Q : 192.168.1.0 네트워크 범위가 어디까지인데?? 
+  A : 192.168.1.0/**24**
 
 </aside>
 
 위에서 설명한 서브넷팅도 IP 클래스에 국한되지 않고 IP 주소를 쪼개는 방식이라서 이 또한 도메인 간 라우팅 기법이다.
 
 <aside>
-📌
-
-**서브넷팅 ⊂ CIDR**
-
+📌**서브넷팅 ⊂ CIDR**
 </aside>
 
 ## 라우팅
@@ -123,21 +112,19 @@ NAT를 이용하는 이유는 **사설 네트워크(Private Network)에 속한 �
 IP 주소에는 Public IP(공인 IP)와 Private IP(사설 IP)가 있다. IP를 굳이 두 종류로 나눈 이유는 IPv4 주소의 낭비를 막고 공인 인터넷을 굳이 사용하지 않아도 되는 단말들에게 어느 망이든 중복 사용 가능한 IP를 주기 위함이다.
 
 <aside>
-❓
-
-**사설 IP를 할당받은 단말이 인터넷을 사용해야 한다면 단말의 IP는 어떻게 변화하는 것일까?**
+❓ **사설 IP를 할당받은 단말이 인터넷을 사용해야 한다면 단말의 IP는 어떻게 변화하는 것일까?**
 
 </aside>
 
 우리가 카페에서 노트북을 사용하면 카페 와이파이에 연결해야 한다. 와이파이를 통해 IP를 할당 받는데, 이 IP는 Private IP이다.
 
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%201.png)
+<img width="433" alt="Image" src="https://github.com/user-attachments/assets/1e60d597-ddeb-470c-8c04-839ff7254502" />
 
 그런데 인터넷은 Public IP로만 연결되어 통신이 가능하다. 내 Private IP를 유지하면서 어떻게 인터넷 연결이 가능한걸까?
 
 우선 그림을 보면
 
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%202.png)
+<img width="659" alt="Image" src="https://github.com/user-attachments/assets/81fbdc1f-a0c5-4df9-ba27-d2d29a6d124e" />
 
 무선 공유기(라우터) 좌측은 인터넷 망이고, 우측이 공유기를 통해 Private IP를 할당받은 장치들이다. 내 컴퓨터가 인터넷을 사용하는 과정을 보면
 
@@ -149,11 +136,11 @@ IP 주소에는 Public IP(공인 IP)와 Private IP(사설 IP)가 있다. IP를 �
 
 :  **가상의(논리적인) 네트워크**
 
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%203.png)
+![Image](https://github.com/user-attachments/assets/48971f9a-1ad6-4405-913f-cefe1793eb16)
 
 VPC는 여러 가용영역에 걸친 형태로 생성할 수 있는데, 물리적으로는 다른 곳에 위치하지만 같은 IP 대역에 위치하게 만들어 리소스들끼리 통신할 수 있게 만들어주는 기술이다.
 
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%204.png)
+![Image](https://github.com/user-attachments/assets/1a3db5d0-5244-4494-b287-dd18aeb89958)
 
 VPC에는 리전의 각 가용 영역에 하나의 서브넷이 있고, 각 서브넷에 인스턴스가 있고 VPC의 리소스와 인터넷 간의 통신을 허용하는 인터넷 게이트웨이가 있다.
 
@@ -166,14 +153,13 @@ VPC에는 리전의 각 가용 영역에 하나의 서브넷이 있고, 각 서�
     
     AWS 계정을 생성하면 모든 리전에 기본 VPC를 만들어주는데, 공유 네트워크라 만약 다른 사람이 자신의 계정으로 기본 VPC에서 네트워크 부하가 많은 작업을 한다면, 이는 내 서버에도 영향을 미친다. 
     
-    ![서울 리전에 생성된 기본 VPC](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-03-04_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_6.09.29.png)
-    
-    서울 리전에 생성된 기본 VPC
+<img width="1172" alt="Image" src="https://github.com/user-attachments/assets/70d4422c-e5e3-480b-90b7-7559ba6650dd" />
+
     
 
 ### VPC의 구성
 
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%205.png)
+![Image](https://github.com/user-attachments/assets/af361f5d-53e2-4f5a-92c1-bef84b689753)
 
 # VPC CIDR
 
@@ -188,13 +174,13 @@ VPC는 CIDR로 표시한다. 이 CIDR은 VPC 내의 인스턴스 및 리소스�
 - CIDR 블록에서 /{prefix} = 서브넷 마스크의 길이
     - /16 ~ /28 까지 가능
         - VPC 생성 시
-            
-            ![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%206.png)
+          
+            <img width="686" alt="Image" src="https://github.com/user-attachments/assets/47f9660b-1001-4afb-a106-1b5ba977c9c8" />
             
     - prefix가 커지면 IP 주소의 개수는 줄어든다 (역 관계)
 - VPC를 생성할 때 RFC 1918의 Private IPv4 주소 범위에 속하는 CIDR 블록을 지정하는 것이 좋다
     
-    ![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%207.png)
+    ![Image](https://github.com/user-attachments/assets/7e4803a9-546f-4ea8-96e4-9f79cbf513e3)
     
     - VPC를 다른 네트워크에 연결하려면 사용하려는 VPC CIDR이 다른 네트워크에서 이미 사용하는 주소와 중복되지 않도록 해야 함
 
@@ -207,9 +193,7 @@ Amazon EC2 API를 사용하여 VPC를 생성하면 CIDR 블록이 표준 형식�
 </aside>
 
 <aside>
-⚠️
-
-VPC 생성 후에는 기본 CIDR은 변경할 수 없으므로, VPC를 만들기 전 주소 요구사항을 신중히 검토해야 한다
+⚠️VPC 생성 후에는 기본 CIDR은 변경할 수 없으므로, VPC를 만들기 전 주소 요구사항을 신중히 검토해야 한다
 
 </aside>
 
@@ -228,9 +212,7 @@ ex) VPC 기본 CIDR이 `172.16.0.0/16`인 경우
 → 하지만 보조 CIDR을 `192.168.0.0/16`으로 지정할 수는 없다. 기본 CIDR 주소 범위를 벗어낫기 때문(네트워크  ID를 넘어감)
 
 <aside>
-⚠️
-
-보조 CIDR이 필요할 수 있겠다고 생각한다면, 기본 CIDR을 신중히 선택해야 한다. 기본 CIDR을 `192.168.0.0/16`로 지정하면, RFC 1918 범위에 부합하는 보조 CIDR을 만들 수 없기 때문이다.
+⚠️보조 CIDR이 필요할 수 있겠다고 생각한다면, 기본 CIDR을 신중히 선택해야 한다. 기본 CIDR을 `192.168.0.0/16`로 지정하면, RFC 1918 범위에 부합하는 보조 CIDR을 만들 수 없기 때문이다.
 
 </aside>
 
@@ -294,9 +276,8 @@ ex. VPC CIDR : `172.16.0.0/16`
 
 서로 다른 가용영역에 서브넷을 하나씩 만들고, 인스턴스를 각 서브넷에 분산 배치해 애플리케이션의 복원성을 구현할 수 있다. 
 
-![스크린샷 2025-03-04 오후 2.56.36.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-03-04_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_2.56.36.png)
-
-![스크린샷 2025-03-04 오후 3.00.20.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-03-04_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.00.20.png)
+![Image](https://github.com/user-attachments/assets/d1ace642-779f-433e-a851-182bd2086e14)
+![Image](https://github.com/user-attachments/assets/4f8c5295-3955-4ab3-8894-2633f8b2e71f)
 
 us-east-1a 가용영역에 장애가 발생하면 
 
@@ -334,8 +315,9 @@ IPv6만 사용한다 하더라도 서브넷에는 반드시 IPv4 CIDR 블록을 
 : 인스턴스가 다른 네트워크 리소스와 통신할 수 있게 하는 인터페이스
 
 - 네트워크 인터페이스 : 컴퓨터가 네트워크에 연결되어 통신하기 위한 물리적인 혹은 가상의 연결포인트
-    
-    ![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%208.png)
+    <center>
+    ![Image](https://github.com/user-attachments/assets/448285f7-ebf9-4ccb-a05d-437a24da3f08)
+    </center>
     
 - 인스턴스에서 실행되는 OS와도 통신 가능
 - 물리적 서버의 네트워크 인터페이스와 같은 기능을 제공
@@ -397,10 +379,9 @@ ENI는 인스턴스와 독립적으로 존재할 수 있으며, ENI를 만들고
 - 리소스 ID는 igw-로 시작
 
 <aside>
-💡
-
-인터넷 게이트웨이를 사용하려면 라우트 테이블에 인터넷 게이트웨이를 타겟으로 하는 기본 라우트를 생성해야 한다.
+💡인터넷 게이트웨이를 사용하려면 라우트 테이블에 인터넷 게이트웨이를 타겟으로 하는 기본 라우트를 생성해야 한다.
 
 </aside>
-
-![image.png](VPC%20-%201%201abcb0a994c580fa920ee80b2a81a8fe/image%209.png)
+<center>
+![Image](https://github.com/user-attachments/assets/ed04ce35-e2bb-4e14-833c-6c7738e87f93)
+</center>
