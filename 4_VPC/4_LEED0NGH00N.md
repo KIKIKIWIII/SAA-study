@@ -97,41 +97,6 @@ IP주소는 네트워크 ID와 호스트 ID로 이뤄져 있다. 기존 클래�
 📌**서브넷팅 ⊂ CIDR**
 </aside>
 
-## 라우팅
-
-: 패킷에 포함된 주소 등의 상세 정보를 이용하여목적지까지 데이터 또는 메세지를 체계적으로 다른 네트워크에 전달하는 경로 선택 (Path Determination) 그리고 스위칭 (Switching)하는 과정
-
-⇒ 목적지 IP까지 가는 최적의 경로 찾기
-
-## NAT**(Network Address Translation)**
-
-: Public IP와 Private IP를 서로 변환해주는 기술 
-
-NAT를 이용하는 이유는 **사설 네트워크(Private Network)에 속한 여러 개의 호스트가 하나의 공인 IP 주소를 사용하여 인터넷에 접속**하기 위함이다.
-
-IP 주소에는 Public IP(공인 IP)와 Private IP(사설 IP)가 있다. IP를 굳이 두 종류로 나눈 이유는 IPv4 주소의 낭비를 막고 공인 인터넷을 굳이 사용하지 않아도 되는 단말들에게 어느 망이든 중복 사용 가능한 IP를 주기 위함이다.
-
-<aside>
-❓ **사설 IP를 할당받은 단말이 인터넷을 사용해야 한다면 단말의 IP는 어떻게 변화하는 것일까?**
-
-</aside>
-
-우리가 카페에서 노트북을 사용하면 카페 와이파이에 연결해야 한다. 와이파이를 통해 IP를 할당 받는데, 이 IP는 Private IP이다.
-
-<img width="433" alt="Image" src="https://github.com/user-attachments/assets/1e60d597-ddeb-470c-8c04-839ff7254502" />
-
-그런데 인터넷은 Public IP로만 연결되어 통신이 가능하다. 내 Private IP를 유지하면서 어떻게 인터넷 연결이 가능한걸까?
-
-우선 그림을 보면
-
-<img width="659" alt="Image" src="https://github.com/user-attachments/assets/81fbdc1f-a0c5-4df9-ba27-d2d29a6d124e" />
-
-무선 공유기(라우터) 좌측은 인터넷 망이고, 우측이 공유기를 통해 Private IP를 할당받은 장치들이다. 내 컴퓨터가 인터넷을 사용하는 과정을 보면
-
-1. 내 Private IP는 공유기의 Public IP로 전환되고
-2. 라우터는 요청받은 Private IP를 기록하고
-3. 외부 인터넷으로 Public IP 주소정보를 보냄
-
 # VPC란?
 
 :  **가상의(논리적인) 네트워크**
