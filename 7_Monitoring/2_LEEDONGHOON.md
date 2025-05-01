@@ -153,7 +153,7 @@ CloudTrail → CloudWatch Logs로 전송하면
 ---
 
 ## EventBridge
-
+https://blog.hwahae.co.kr/all/tech/8783
 - AWS 서비스나 사용자 행동이 발생하면(Event)
 - 미리 설정한 규칙(Rule)에 따라
 - 특정 작업(Target)을 자동 실행한다
@@ -180,7 +180,7 @@ CloudTrail → CloudWatch Logs로 전송하면
 ---
 
 ## AWS Config
-
+https://tech.cloud.nongshim.co.kr/blog/aws/1762/
 **: AWS 리소스 구성에 대한 진단, 감사 및 평가를 진행하는 서비스**
 
 예를 들어, 
