@@ -21,7 +21,7 @@
 - 각 아이템은 하나 이상의 속성(attribute)으로 구성됨, 이는 관계형 데이터베이스의 컬럼과 유사
 - 속성은 키/밸류 쌍(key/value pairs)으로 표현됨
 
-[NoSql img](./images/NoSQL example.png)
+![NoSql img](./images/NoSQL%20example.png)
 
 
 ### NoSQL의 성능 특성
